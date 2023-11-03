@@ -1,0 +1,55 @@
+406a57e463987d84a5ed8d997a869a92016b6007
+###
+POST http://127.0.0.1:8000/api/v1/posts/
+Authorization: Token 406a57e463987d84a5ed8d997a869a92016b6007
+Content-Type: application/json
+
+{
+    "text": "testpost",
+    "group": "1"
+}
+###
+GET http://127.0.0.1:8000/api/v1/posts/
+Authorization: Token 406a57e463987d84a5ed8d997a869a92016b6007
+###
+GET http://127.0.0.1:8000/v1/posts/1/
+###
+POST http://127.0.0.1:8000/v1/groups/
+Authorization: Token 8a519903a2a8f2441c0b8faaefa20b477fe717aa
+Content-Type: application/json
+
+{
+    "title": "testgroup",
+    "slug": "tstgroup",
+    "description": "testdescription"
+}
+###
+DELETE http://127.0.0.1:8000/posts/2/
+###
+POST http://127.0.0.1:8000/v1/posts/1/comments/
+Authorization: Token 7f64fcdc8621e38ea7e74a5605a35041d34f2e9f
+Content-Type: application/json
+
+{
+    "text": "testcomment"
+}
+###
+GET http://127.0.0.1:8000/v1/posts/1/comments/
+Authorization: Token 7f64fcdc8621e38ea7e74a5605a35041d34f2e9f
+###
+GET http://127.0.0.1:8000/v1/groups/1/
+###
+GET http://127.0.0.1:8000/v1/users/
+Authorization: Token 8a519903a2a8f2441c0b8faaefa20b477fe717aa
+###
+###
+POST http://127.0.0.1:8000/api/v1/api-token-auth/
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "15091509q"
+}
+###
+GET http://127.0.0.1:8000/v1/posts/
+Authorization: Token 8a519903a2a8f2441c0b8faaefa20b477fe717aa
