@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
 from api.permissions import IsAuthorOrReadOnly
-from posts.models import Post, Comment, Group, User
+from posts.models import Post, Group, User
 from api.serializers import (
     PostSerializer, CommentSerializer, GroupSerializer, UserSerializer
 )
