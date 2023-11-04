@@ -13,7 +13,7 @@ from api.serializers import (
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
+    permission_classes = (IsAuthenticated, IsAuthorOrReadOnly)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -21,12 +21,12 @@ class PostViewSet(viewsets.ModelViewSet):
 
 class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
-    permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
+    permission_classes = (IsAuthenticated, IsAuthorOrReadOnly)
 
     def get_queryset(self):
         post_id = self.kwargs.get('post_id')
-        new_queryset = Comment.objects.filter(post=post_id)
-        return new_queryset
+        post = get_object_or_404(Post, pk=post_id)
+        return post.comments.all()
 
     def perform_create(self, serializer):
         post_id = self.kwargs.get('post_id')
